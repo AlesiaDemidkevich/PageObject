@@ -12,23 +12,21 @@ import page.ElemaProductContainerPage;
 import page.ElemaItemPage;
 import page.ElemaCartPage;
 
-
 public class ElemaPOTests {
+
     private WebDriver driver;
     private ChromeOptions options;
 
     @BeforeMethod(alwaysRun = true)
     public void createDriver() {
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-notifications");
-        options.addArguments("--disable-popup-blocking");
         options.addArguments("--window-size=1600,900");
         driver = new ChromeDriver(options);
     }
 
     @Test
     public void addItemToCartTest(){
-        int countOfItems = new ElemaHomePage(driver)
+        String countOfItems = new ElemaHomePage(driver)
                 .openPage()
                 .inputProductNumber()
                 .chooseTargetModel()
@@ -39,11 +37,29 @@ public class ElemaPOTests {
                 .openCart()
                 .getCountOfItems();
 
-        Assert.assertEquals(countOfItems, 1);
+        Assert.assertEquals(countOfItems, "1");
+    }
+
+    @Test
+    public void addThreeItemsToCartTest(){
+        String countOfItems = new ElemaHomePage(driver)
+                .openPage()
+                .inputProductNumber()
+                .chooseTargetModel()
+                .scrollToItem()
+                .chooseSize()
+                .chooseHeight()
+                .addToCart()
+                .addToCart()
+                .addToCart()
+                .openCart()
+                .getCountOfItems();
+
+        Assert.assertEquals(countOfItems, "3");
     }
 
     @AfterMethod
     public void closeDriver(){
-        driver.close();
+       driver.close();
     }
 }

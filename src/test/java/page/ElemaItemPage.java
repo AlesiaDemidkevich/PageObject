@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ElemaItemPage extends AbstractPage{
+
     @FindBy(xpath = "//li[@title=\"44\"]")
     WebElement targetSize;
 

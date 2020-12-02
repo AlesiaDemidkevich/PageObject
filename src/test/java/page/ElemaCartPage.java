@@ -6,16 +6,16 @@ import java.util.ArrayList;
 import org.openqa.selenium.support.FindBy;
 
 public class ElemaCartPage extends AbstractPage {
-    @FindBy(xpath = "//table[@class=\"basket-items-list-table\"]")
-    WebElement countOfItem;
+
+    @FindBy(xpath = "//input[@class=\"basket-item-amount-filed\"]")
+    WebElement cartItem;
 
     public ElemaCartPage(WebDriver driver) {
         super(driver);
     }
 
-    public int getCountOfItems(){
-        ArrayList<WebElement> cartItems = new ArrayList<WebElement>();
-        cartItems.add(countOfItem);
-        return cartItems.size();
+    public String getCountOfItems(){
+        return cartItem.getAttribute("value");
     }
+
 }

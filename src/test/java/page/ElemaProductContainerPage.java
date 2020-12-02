@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class ElemaProductContainerPage extends AbstractPage{
+
     @FindBy(xpath = "//div[@class=\"col-xs-12 col-sm-6 col-md-6\"]")
     WebElement targetModel;
 
