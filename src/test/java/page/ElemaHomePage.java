@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class ElemaHomePage extends AbstractPage {
 
     private static final String HOMEPAGE_URL = "https://elema.by/";
-    private static String productNumber = "0С360-20-Р53";
+
 
     @FindBy(xpath = "//*[@id=\"main-nav\"]/div/form/div/input")
     private WebElement searchInput;
@@ -24,7 +24,7 @@ public class ElemaHomePage extends AbstractPage {
         return this;
     }
 
-    public ElemaProductContainerPage inputProductNumber() {
+    public ElemaProductContainerPage inputProductNumber(String productNumber) {
         searchInput.click();
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
                 .until(ExpectedConditions.visibilityOf(searchInput)).sendKeys(productNumber);

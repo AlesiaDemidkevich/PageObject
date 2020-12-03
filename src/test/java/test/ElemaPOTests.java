@@ -16,10 +16,13 @@ public class ElemaPOTests {
 
     private WebDriver driver;
     private ChromeOptions options;
+    private static String productNumber = "0С360-20-Р53";
 
     @BeforeMethod(alwaysRun = true)
     public void createDriver() {
         ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-notifications");
+        options.addArguments("--disable-popup-blocking");
         options.addArguments("--window-size=1600,900");
         driver = new ChromeDriver(options);
     }
@@ -28,7 +31,7 @@ public class ElemaPOTests {
     public void addItemToCartTest(){
         String countOfItems = new ElemaHomePage(driver)
                 .openPage()
-                .inputProductNumber()
+                .inputProductNumber(productNumber)
                 .chooseTargetModel()
                 .scrollToItem()
                 .chooseSize()
@@ -44,7 +47,7 @@ public class ElemaPOTests {
     public void addThreeItemsToCartTest(){
         String countOfItems = new ElemaHomePage(driver)
                 .openPage()
-                .inputProductNumber()
+                .inputProductNumber(productNumber)
                 .chooseTargetModel()
                 .scrollToItem()
                 .chooseSize()
